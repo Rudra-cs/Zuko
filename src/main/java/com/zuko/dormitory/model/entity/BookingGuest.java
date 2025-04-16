@@ -1,4 +1,4 @@
-package com.zuko.dormitory.model;
+package com.zuko.dormitory.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
