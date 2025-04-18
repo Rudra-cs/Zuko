@@ -2,9 +2,12 @@ package com.zuko.dormitory.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.zuko.dormitory.model.common.BaseEntity;
+import com.zuko.dormitory.model.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
@@ -14,17 +17,18 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Booking {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@EqualsAndHashCode(callSuper = true)
+public class Booking  extends BaseEntity {
+
 
     private LocalDate startDate;
     private LocalDate endDate;
     private String notes;
     private String paymentMode;
     private Double totalAmount;
-    private String status; // CONFIRMED / CANCELLED / COMPLETED
+
+    @Enumerated(EnumType.STRING)
+    private Status status; // CONFIRMED / CANCELLED / COMPLETED
 
     @JsonBackReference
     @ManyToOne
@@ -32,6 +36,6 @@ public class Booking {
     private Person person;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<BookingGuest> guests;
 }

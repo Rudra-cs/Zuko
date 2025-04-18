@@ -1,9 +1,11 @@
 package com.zuko.dormitory.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.zuko.dormitory.model.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
@@ -12,10 +14,8 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookingGuest {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@EqualsAndHashCode(callSuper = true)
+public class BookingGuest extends BaseEntity {
 
     private String guestName;
     private int guestAge;
