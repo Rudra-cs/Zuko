@@ -15,9 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Room extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     private String roomNo;
     private int floor;
@@ -26,6 +23,6 @@ public class Room extends BaseEntity {
     private String roomType; // BED_4, BED_6 etc.
     private boolean isAvailable;
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RoomBed> beds;
 }

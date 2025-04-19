@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Booking  extends BaseEntity {
+public class Booking extends BaseEntity {
 
 
     private LocalDate startDate;
@@ -36,6 +36,6 @@ public class Booking  extends BaseEntity {
     private Person person;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookingGuest> guests;
 }
