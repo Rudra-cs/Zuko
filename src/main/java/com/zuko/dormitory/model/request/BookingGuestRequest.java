@@ -1,4 +1,4 @@
 package com.zuko.dormitory.model.request;
 
-public class BookingGuestRequest {
+public record BookingGuestRequest() {
 }
